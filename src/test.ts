@@ -1,5 +1,5 @@
-function addition(a: number,b: number) {
-    return a + b
+function addition(a: number, b: number) {
+  return a + b;
 }
 
-console.log(addition(7,11))
+console.log(addition(7, 11));
