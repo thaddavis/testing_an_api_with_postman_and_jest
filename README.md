@@ -1,1 +1,1 @@
-# Testing Demo with Postman and Jest
+# Testing an API with Postman and Jest
