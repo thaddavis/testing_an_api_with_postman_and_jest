@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/test.ts"
+    "dev-test": "nodemon src/test.ts",
+    "dev": "nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,19 @@
   },
   "homepage": "https://github.com/thaddavis/testing_an_api_with_postman_and_jest#readme",
   "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/uuid": "^8.3.4",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@fastify/jwt": "^6.3.3",
+    "argon2": "^0.30.2",
+    "fastify": "^4.10.2",
+    "fluent-json-schema": "^4.0.0",
+    "pino": "^8.7.0",
+    "pino-pretty": "^9.1.1",
+    "uuid": "^9.0.0"
   }
 }
