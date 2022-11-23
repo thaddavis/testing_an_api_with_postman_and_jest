@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/thaddavis/testing_an_api_with_postman_and_jest#readme",
   "devDependencies": {
+    "@types/mongoose-unique-validator": "^1.0.6",
     "@types/node": "^18.11.9",
     "@types/tough-cookie": "^4.0.2",
     "@types/uuid": "^8.3.4",
@@ -38,6 +39,8 @@
     "argon2": "^0.30.2",
     "fastify": "^4.10.2",
     "fluent-json-schema": "^4.0.0",
+    "mongoose": "^6.7.3",
+    "mongoose-unique-validator": "^3.1.0",
     "pino": "^8.7.0",
     "pino-pretty": "^9.1.1",
     "uuid": "^9.0.0"

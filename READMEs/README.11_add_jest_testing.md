@@ -45,7 +45,7 @@ placing a `.test.ts` file side-by-side with the file you are testing
 
 ## STEP 7 - Start building the Authentication Flow 1 test
 
-- npm i -D axios axios-cookiejar-support tough-cookie @types/tough-cookie
+- npm i -D axios@^1.2.0 axios-cookiejar-support@^4.0.3 tough-cookie@^4.1.2 @types/tough-cookie@^4.0.2
 - touch `authentication_flow_1.ts`
 - test the sign-up, sign-in, and is-authed endpoints
 
