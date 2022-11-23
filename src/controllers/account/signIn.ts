@@ -10,7 +10,7 @@ export const signIn = async (
 ) => {
   const { email, password } = req.body;
 
-  const result = await Account.findOne({ email });
+  const result = await Account.findOne({ email, verified: true });
 
   if (result) {
     const { passwordHash, email } = result;

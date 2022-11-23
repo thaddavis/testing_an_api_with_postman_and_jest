@@ -34,3 +34,11 @@ export const resetPasswordSchema = {
     .prop("resetPasswordToken", S.string().required())
     .prop("newPassword", S.string().required()),
 };
+
+export const mockRequestPasswordResetSchema = {
+  body: S.object().prop("email", S.string().required()),
+};
+
+export const mockReceiveVerificationTokenSchema = {
+  body: S.object().prop("email", S.string().required()),
+};
