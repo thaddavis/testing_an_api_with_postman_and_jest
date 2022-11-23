@@ -29,6 +29,13 @@ const authRouter = async (fastify: FastifyInstance) => {
     preHandler: [authenticateToken],
     handler: controllers.account.isAuthed,
   });
+
+  fastify.route({
+    method: "DELETE",
+    url: "/sign-out",
+    preHandler: [authenticateToken],
+    handler: controllers.account.signOut,
+  });
 };
 
 export { authRouter };

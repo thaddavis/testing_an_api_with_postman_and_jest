@@ -7,8 +7,10 @@ export const authenticateToken = async (
 ) => {
   req.log.info("*** authenticateToken middleware ***");
 
-  req.user = {
-    email: "test@example.com",
-  };
-  next();
+  try {
+    await req.jwtVerify();
+    next();
+  } catch (err) {
+    throw err;
+  }
 };
