@@ -1,19 +1,18 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { Account } from "../../db/models/Account";
 
 export const isAuthed = async (req: FastifyRequest, res: FastifyReply) => {
   let { email } = req.user;
 
-  //   const result = await Account.findOne({
-  //     email,
-  //   });
+  req.log.info(email);
 
-  // if (email) {
-  //   // await result.save();
+  const result = await Account.findOne({
+    email,
+  });
 
-  //   res.status(200).send();
-  // } else {
-  //   res.status(404).send();
-  // }
-
-  res.status(401).send();
+  if (result) {
+    res.status(200).send();
+  } else {
+    res.status(404).send();
+  }
 };

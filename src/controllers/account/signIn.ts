@@ -15,18 +15,21 @@ export const signIn = async (
   const result = await Account.findOne({ email });
 
   if (result) {
-    const { passwordHash } = result;
+    const { passwordHash, email } = result;
 
     if (await argon2.verify(passwordHash, password)) {
-      // const token = generateAccessToken({ email });
+      const token = await res.jwtSign({
+        email: email,
+      });
+
       res
         .status(200)
-        // .cookie("jwt", token, {
-        //   sameSite: "strict",
-        //   path: "/",
-        //   expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 2),
-        //   httpOnly: true,
-        // })
+        .cookie("jwt", token, {
+          sameSite: "strict",
+          path: "/",
+          expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 2),
+          httpOnly: true,
+        })
         .send();
     } else res.status(401).send();
   } else {

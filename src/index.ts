@@ -3,6 +3,8 @@ import pino from "pino";
 import { indexRouter } from "./routes/indexRouter";
 import { authRouter } from "./routes/authRouter";
 import { connectToDb } from "./db/connectToDb";
+import { fastifyCookie } from "@fastify/cookie";
+import { fastifyJwt } from "@fastify/jwt";
 
 const logger = pino({
   transport: {
@@ -19,9 +21,14 @@ const app: FastifyInstance = fastify({
   logger: logger,
 });
 
-app.register(require("@fastify/jwt"), {
+app.register(fastifyJwt, {
   secret: "supersecret",
+  cookie: {
+    cookieName: "jwt",
+    signed: false,
+  },
 });
+app.register(fastifyCookie);
 app.register(indexRouter, { prefix: "" });
 app.register(authRouter, { prefix: "auth-api" });
 

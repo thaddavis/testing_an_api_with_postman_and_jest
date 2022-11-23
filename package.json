@@ -35,6 +35,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@fastify/cookie": "^8.3.0",
     "@fastify/jwt": "^6.3.3",
     "argon2": "^0.30.2",
     "fastify": "^4.10.2",
