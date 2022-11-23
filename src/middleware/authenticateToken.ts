@@ -1,16 +1,6 @@
-import { FastifyReply, FastifyRequest } from "fastify";
+import { FastifyRequest } from "fastify";
 
-export const authenticateToken = async (
-  req: FastifyRequest,
-  res: FastifyReply,
-  next: Function
-) => {
+export const authenticateToken = async (req: FastifyRequest) => {
   req.log.info("*** authenticateToken middleware ***");
-
-  try {
-    await req.jwtVerify();
-    next();
-  } catch (err) {
-    throw err;
-  }
+  await req.jwtVerify();
 };
