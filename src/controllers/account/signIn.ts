@@ -2,6 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { authenticateToken } from "../../middleware/authenticateToken";
 import * as argon2 from "argon2";
 import { v4 } from "uuid";
+import { Account } from "../../db/models/Account";
 
 export const signIn = async (
   req: FastifyRequest<{
@@ -11,18 +12,12 @@ export const signIn = async (
 ) => {
   const { email, password } = req.body;
 
-  // const result = await Account.findOne({ email, verified: true });
+  const result = await Account.findOne({ email });
 
-  if (false) {
-    // const { passwordHash } = result;
+  if (result) {
+    const { passwordHash } = result;
 
-    if (
-      await argon2.verify(
-        "$argon2i$v=19$m=4096,t=3,p=1$wHngEd/83oYjIMMAEpXOtw$+mtSjdGkvQhXPExjsp/m3A0vbfLD+Gt9STdtm/57gZA",
-        // "",
-        password
-      )
-    ) {
+    if (await argon2.verify(passwordHash, password)) {
       // const token = generateAccessToken({ email });
       res
         .status(200)

@@ -2,6 +2,7 @@ import fastify, { FastifyInstance } from "fastify";
 import pino from "pino";
 import { indexRouter } from "./routes/indexRouter";
 import { authRouter } from "./routes/authRouter";
+import { connectToDb } from "./db/connectToDb";
 
 const logger = pino({
   transport: {
@@ -11,6 +12,8 @@ const logger = pino({
     },
   },
 });
+
+connectToDb();
 
 const app: FastifyInstance = fastify({
   logger: logger,

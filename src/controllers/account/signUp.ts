@@ -2,6 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { authenticateToken } from "../../middleware/authenticateToken";
 import * as argon2 from "argon2";
 import { v4 } from "uuid";
+import { Account } from "../../db/models/Account";
 
 export const signUp = async (
   req: FastifyRequest<{
@@ -14,8 +15,14 @@ export const signUp = async (
   const passwordHash = await argon2.hash(password);
   const verificationToken = v4();
 
-  req.log.info(`passwordHash: ${passwordHash}`);
-  req.log.info(`verificationToken: ${verificationToken}`);
+  const newAccount = new Account({
+    name,
+    email,
+    passwordHash,
+    verificationToken,
+  });
 
-  return res.status(200).send();
+  await newAccount.save();
+
+  res.status(200).send();
 };
