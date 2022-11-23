@@ -24,3 +24,7 @@
 ## Test sign-up route with Compass
 
 git diff -- . ':(exclude)package-lock.json'
+
+## Next Step
+
+We will add JWT support and then test with POSTMAN

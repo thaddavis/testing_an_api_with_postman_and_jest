@@ -1,0 +1,1 @@
+export { generateResetPasswordConfigSes } from "./resetPassword";

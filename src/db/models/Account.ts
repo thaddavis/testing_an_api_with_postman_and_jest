@@ -3,8 +3,8 @@ import uniqueValidator from "mongoose-unique-validator";
 
 interface IAccount {
   email: string;
-  resetPasswordToken?: string;
-  verificationToken?: string;
+  resetPasswordToken?: string | null;
+  verificationToken?: string | null;
   passwordHash: string;
   name: string;
   verified: boolean;
