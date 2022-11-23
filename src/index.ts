@@ -1,3 +1,5 @@
+import * as dotenv from "dotenv";
+dotenv.config({ path: "./.env.development.local" });
 import fastify, { FastifyInstance } from "fastify";
 import pino from "pino";
 import { indexRouter } from "./routes/indexRouter";
@@ -22,7 +24,8 @@ const app: FastifyInstance = fastify({
 });
 
 app.register(fastifyJwt, {
-  secret: "supersecret",
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  secret: process.env.JWT_SECRET!,
   cookie: {
     cookieName: "jwt",
     signed: false,
@@ -43,7 +46,8 @@ app.setErrorHandler((err, req, res) => {
   res.status(500).send();
 });
 
-app.listen({ port: 8080 }, (err) => {
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+app.listen({ port: Number.parseInt(process.env.PORT!) }, (err) => {
   if (err) {
     console.error(err);
     process.exit(1);
