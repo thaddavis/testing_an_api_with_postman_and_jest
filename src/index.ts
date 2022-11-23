@@ -43,10 +43,9 @@ app.setErrorHandler((err, req, res) => {
   res.status(500).send();
 });
 
-app.listen({ port: 8080 }, (err, address) => {
+app.listen({ port: 8080 }, (err) => {
   if (err) {
     console.error(err);
     process.exit(1);
   }
-  console.info(`Server listening at ${address}`);
 });

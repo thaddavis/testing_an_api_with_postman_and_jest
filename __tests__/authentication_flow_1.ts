@@ -1,7 +1,6 @@
 import { describe, expect, test, beforeAll } from "@jest/globals";
 import axios, { AxiosRequestConfig } from "axios";
 import { wrapper } from "axios-cookiejar-support";
-import { before } from "node:test";
 import { CookieJar } from "tough-cookie";
 
 const jar = new CookieJar();
@@ -20,13 +19,13 @@ describe("Authentication Flow 1", () => {
 
   test("Sign Up", async () => {
     try {
-      let data = JSON.stringify({
+      const data = JSON.stringify({
         email: "t@t.com",
         password: "123",
         name: "tad",
       });
 
-      let config: AxiosRequestConfig = {
+      const config: AxiosRequestConfig = {
         method: "post",
         url: `${API_HOST}/auth-api/sign-up`,
         headers: {
@@ -44,12 +43,12 @@ describe("Authentication Flow 1", () => {
 
   test("Sign In", async () => {
     try {
-      let data = JSON.stringify({
+      const data = JSON.stringify({
         email: "t@t.com",
         password: "123",
       });
 
-      let config: AxiosRequestConfig = {
+      const config: AxiosRequestConfig = {
         method: "post",
         url: `${API_HOST}/auth-api/sign-in`,
         headers: {
@@ -68,12 +67,12 @@ describe("Authentication Flow 1", () => {
 
   test("Check If Authenticated Should Fail", async () => {
     try {
-      let data = JSON.stringify({
+      const data = JSON.stringify({
         email: "t@t.com",
         password: "123",
       });
 
-      let config: AxiosRequestConfig = {
+      const config: AxiosRequestConfig = {
         method: "get",
         url: `${API_HOST}/auth-api/is-authed`,
         headers: {

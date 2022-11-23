@@ -1,8 +1,8 @@
-import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { FastifyReply, FastifyRequest } from "fastify";
 import { Account } from "../../db/models/Account";
 
 export const isAuthed = async (req: FastifyRequest, res: FastifyReply) => {
-  let { email } = req.user;
+  const { email } = req.user;
 
   req.log.info(email);
 
