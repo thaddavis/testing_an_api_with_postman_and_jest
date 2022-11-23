@@ -6,3 +6,5 @@ export { requestPasswordReset } from "./requestPasswordReset";
 export { verifyAccount } from "./verifyAccount";
 export { resetPassword } from "./resetPassword";
 export { deleteAccount } from "./deleteAccount";
+export { mockRequestPasswordReset } from "./MOCKrequestPasswordReset";
+export { mockReceiveVerificationToken } from "./MOCKreceiveVerificationToken";

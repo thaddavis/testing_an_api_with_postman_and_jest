@@ -7,6 +7,7 @@ import { authRouter } from "./routes/authRouter";
 import { connectToDb } from "./db/connectToDb";
 import { fastifyCookie } from "@fastify/cookie";
 import { fastifyJwt } from "@fastify/jwt";
+import { customErrorCodes } from "./utility";
 
 const logger = pino({
   transport: {
@@ -40,6 +41,11 @@ app.setErrorHandler((err, req, res) => {
 
   if (err.validation) {
     res.status(422).send();
+    return;
+  }
+
+  if (err.code === customErrorCodes.FST_JWT_NO_AUTHORIZATION_IN_COOKIE) {
+    res.status(401).send();
     return;
   }
 
