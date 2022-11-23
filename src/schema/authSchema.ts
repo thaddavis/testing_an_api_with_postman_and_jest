@@ -17,3 +17,20 @@ export const signinSchema = {
 };
 
 export const isAuthedSchema = {};
+
+export const requestPasswordResetSchema = {
+  body: S.object().prop("email", S.string().required()),
+};
+
+export const verifyAccountSchema = {
+  body: S.object()
+    .prop("email", S.string().required())
+    .prop("verificationToken", S.string().required()),
+};
+
+export const resetPasswordSchema = {
+  body: S.object()
+    .prop("email", S.string().required())
+    .prop("resetPasswordToken", S.string().required())
+    .prop("newPassword", S.string().required()),
+};

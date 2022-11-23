@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import * as argon2 from "argon2";
+import argon2 from "argon2";
 import { v4 } from "uuid";
 import { Account } from "../../db/models/Account";
 
@@ -22,6 +22,8 @@ export const signUp = async (
   });
 
   await newAccount.save();
+
+  // Send an email for Verification HERE!
 
   res.status(200).send();
 };
