@@ -8,7 +8,8 @@
     "test-watch": "jest --watch",
     "dev-test": "nodemon src/addition.ts",
     "dev": "nodemon src/index.ts",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "compile": "tsc -p ."
   },
   "repository": {
     "type": "git",
