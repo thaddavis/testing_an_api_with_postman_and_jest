@@ -21,7 +21,7 @@ const logger = pino({
 connectToDb();
 
 const app: FastifyInstance = fastify({
-  logger: logger,
+  // logger: logger,
 });
 
 app.register(fastifyJwt, {
